@@ -18,31 +18,31 @@ export class App extends React.Component {
   };
 
   addContact = contact => {
-    if (
-      this.state.contacts.every(oldContact => oldContact.name !== contact.name)
-    ) {
-      this.setState(prevState => ({
-        contacts: [contact, ...prevState.contacts],
+    if (!this.state.contacts.find(({ name }) => name === contact.name)) {
+      this.setState(({ contacts }) => ({
+        contacts: [contact, ...contacts],
       }));
     } else {
       alert(`${contact.name} is already in contacts.`);
     }
   };
 
-  findContact = e => {
-    this.setState({ filter: e.currentTarget.value });
+  findContact = ({ currentTarget: { value } }) => {
+    this.setState({ filter: value });
+  };
+
+  filterContacts = () => {
+    return this.state.contacts.filter(contact =>
+      contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
+    );
   };
 
   deleteContact = contactId => {
-    this.setState(prevState => ({
-      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    this.setState(({ contacts }) => ({
+      contacts: contacts.filter(({ id }) => id !== contactId),
     }));
   };
   render() {
-    const filteredContacts = this.state.contacts.filter(contact =>
-      contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
-    );
-
     return (
       <Box>
         <GlobalStyle />
@@ -54,7 +54,7 @@ export class App extends React.Component {
           <h2>Contacts</h2>
           <Filter value={this.state.filter} onChange={this.findContact} />
           <ContactList
-            contacts={filteredContacts}
+            contacts={this.filterContacts()}
             deleteContact={this.deleteContact}
           />
         </ContactBox>

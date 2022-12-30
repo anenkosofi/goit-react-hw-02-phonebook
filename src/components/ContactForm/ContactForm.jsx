@@ -8,8 +8,8 @@ export class ContactForm extends React.Component {
     number: '',
   };
 
-  handleChange = e => {
-    this.setState({ [e.currentTarget.name]: e.currentTarget.value });
+  handleChange = ({ currentTarget: { name, value } }) => {
+    this.setState({ [name]: value });
   };
 
   handleSubmit = e => {
