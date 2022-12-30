@@ -70,13 +70,13 @@ const Button = styled.button`
   margin: 0 auto;
   padding: 14px 26px;
 
-  font-size: 16px;
+  font-size: 14px;
   letter-spacing: 1px;
   text-align: center;
 
   color: #010101;
 
-  border: 2px solid rgb(200, 200, 200);
+  border: 1px solid rgb(200, 200, 200);
   border-radius: 50px;
 
   cursor: pointer;
@@ -95,7 +95,7 @@ const Button = styled.button`
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, #1d976c, #76b852);
+    background-color: #1d976c;
     transform: scaleX(0);
     z-index: -1;
 
