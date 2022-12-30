@@ -8,6 +8,9 @@ export const Box = styled.div`
   gap: 30px;
   padding-top: 40px;
   padding-bottom: 40px;
+  width: 100%;
+
   font-size: 32px;
+
   color: #010101;
 `;

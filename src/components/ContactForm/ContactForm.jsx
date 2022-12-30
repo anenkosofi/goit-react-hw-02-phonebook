@@ -1,5 +1,6 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
+import { Form, Field, Label, Input, Button } from './ContactForm.styled';
 
 export class ContactForm extends React.Component {
   state = {
@@ -27,33 +28,35 @@ export class ContactForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} autoComplete="off">
-        <label>
-          Name
-          <input
+      <Form onSubmit={this.handleSubmit} autoComplete="off">
+        <Field>
+          <Input
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            placeholder=" "
             required
             onChange={this.handleChange}
             value={this.state.name}
           />
-        </label>
-        <label>
-          Number
-          <input
+          <Label>Name</Label>
+        </Field>
+        <Field>
+          <Input
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            placeholder=" "
             required
             onChange={this.handleChange}
             value={this.state.number}
           />
-        </label>
-        <button type="submit">Add contact</button>
-      </form>
+          <Label>Number</Label>
+        </Field>
+        <Button type="submit">Add contact</Button>
+      </Form>
     );
   }
 }
