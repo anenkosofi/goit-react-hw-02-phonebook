@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { GlobalStyle } from './GlobalStyle';
 import { Box } from './Box.styled';
 import { ContactForm } from './ContactForm';
@@ -42,6 +43,7 @@ export class App extends React.Component {
       contacts: contacts.filter(({ id }) => id !== contactId),
     }));
   };
+
   render() {
     return (
       <Box>
@@ -62,3 +64,18 @@ export class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
+  filter: PropTypes.string,
+  addContact: PropTypes.func,
+  findContact: PropTypes.func,
+  filterContacts: PropTypes.func,
+  deleteContact: PropTypes.func,
+};
