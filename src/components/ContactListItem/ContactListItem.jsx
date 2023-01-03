@@ -23,8 +23,7 @@ export function ContactListItem({ contact: { name, number }, deleteContact }) {
 }
 
 ContactListItem.propTypes = {
-  contact: PropTypes.exact({
-    id: PropTypes.string.isRequired,
+  contact: PropTypes.shape({
     name: PropTypes.string.isRequired,
     number: PropTypes.string.isRequired,
   }).isRequired,

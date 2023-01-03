@@ -18,9 +18,13 @@ export class App extends React.Component {
   };
 
   addContact = contact => {
-    if (!this.state.contacts.find(({ name }) => name === contact.name)) {
+    if (
+      !this.state.contacts.find(
+        ({ name }) => name.toLocaleLowerCase() === contact.name.toLowerCase()
+      )
+    ) {
       this.setState(({ contacts }) => ({
-        contacts: [contact, ...contacts],
+        contacts: [...contacts, contact],
       }));
     } else {
       alert(`${contact.name} is already in contacts.`);
