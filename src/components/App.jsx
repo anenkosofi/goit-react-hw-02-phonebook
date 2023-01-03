@@ -57,7 +57,9 @@ export class App extends React.Component {
         </PhonebookBox>
         <ContactBox>
           <h2>Contacts</h2>
-          <Filter value={this.state.filter} onChange={this.findContact} />
+          {this.state.contacts.length !== 0 && (
+            <Filter value={this.state.filter} onChange={this.findContact} />
+          )}
           <ContactList
             contacts={this.filterContacts()}
             deleteContact={this.deleteContact}
